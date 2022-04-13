@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/timeFragment">
+
+    <fragment
+        android:id="@+id/timeFragment"
+        android:name="com.andrydev.calltimer.view.fragments.TimeFragment"
+        android:label="fragment_time"
+        tools:layout="@layout/fragment_time" />
+    <fragment
+        android:id="@+id/callsFragment"
+        android:name="com.andrydev.calltimer.view.fragments.CallsFragment"
+        android:label="fragment_calls"
+        tools:layout="@layout/fragment_calls" />
+    <fragment
+        android:id="@+id/messagesFragment"
+        android:name="com.andrydev.calltimer.view.fragments.MessagesFragment"
+        android:label="fragment_messages"
+        tools:layout="@layout/fragment_messages" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.andrydev.calltimer.view.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

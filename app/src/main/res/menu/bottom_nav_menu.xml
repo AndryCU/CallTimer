@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/timeFragment"
+        android:icon="@drawable/access_time"
+        android:title="Horario"/>
+    <item
+        android:id="@+id/callsFragment"
+        android:icon="@drawable/phone"
+        android:title="Llamadas"
+        />
+    <item
+        android:id="@+id/messagesFragment"
+        android:icon="@drawable/message"
+        android:title="SMS"
+        />
+    <item
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/settings"
+        android:title="Configuracion"
+        />
+
+
+</menu>

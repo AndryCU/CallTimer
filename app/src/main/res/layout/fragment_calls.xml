@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_color"
+    tools:context=".view.fragments.CallsFragment">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:elevation="@dimen/_15sdp"
+        android:backgroundTint="@color/white"
+        app:icon="@drawable/ic_baseline_add_ic_call_24"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:contentDescription="addnumber" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

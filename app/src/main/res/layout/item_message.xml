@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+   android:layout_margin="@dimen/_15sdp"
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/_10sdp"
+    android:layout_width="match_parent"
+    android:background="@drawable/border"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:src="@drawable/ic_baseline_message_24_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textviewContactNumber"
+        android:textSize="@dimen/_8ssp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+00000000"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/contact_text_item" />
+    <TextView
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:id="@+id/contact_text_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Karenia"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_marginTop="@dimen/_5sdp"
+        android:id="@+id/message_text_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:maxLines="2"
+        android:text="Este es un mensaje de prueba escrito para ver la cantidadad de carateres que puede ocupar en una fila y ver que tal se se en los dispositivos."
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

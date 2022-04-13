@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="@dimen/_5sdp"
+    tools:context=".view.activities.MainActivity">
+
+    <TextView
+        android:id="@+id/textTittleMessageDialogView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adicionar SMS"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/textTittleMessageDialogView"
+        android:id="@+id/textInfoDialogView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mensaje"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextSMSDialog"
+        app:layout_constraintStart_toStartOf="@+id/editTextSMSDialog" />
+
+    <EditText
+        android:id="@+id/editTextSMSDialog"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:hint="Texto del Mensaje"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.35"
+        android:layout_marginEnd="@dimen/_15sdp"
+        app:layout_constraintTop_toBottomOf="@+id/textInfoDialogView"
+        app:layout_constraintWidth_percent="0.15" />
+
+    <TextView
+        android:layout_marginTop="@dimen/_10sdp"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adicionar contacto"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintStart_toStartOf="@+id/editTextSMSDialog"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSMSDialog" />
+
+    <ImageButton
+        android:id="@+id/imageButtonAddContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:background="@drawable/sun"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintStart_toStartOf="@+id/editTextSMSDialog"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textviewContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:text="+5355496253"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButtonAddContact"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonAddContact"
+        app:layout_constraintTop_toTopOf="@+id/imageButtonAddContact" />
+
+    <ImageButton
+        android:id="@+id/saveButtomDialog"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/_15sdp"
+        android:background="@drawable/save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintWidth_percent="0.08" />
+
+    <ImageButton
+        android:id="@+id/cancelButtonDialog"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/_25sdp"
+        android:background="@drawable/save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/saveButtomDialog"
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintWidth_percent="0.08" />
+</androidx.constraintlayout.widget.ConstraintLayout>
