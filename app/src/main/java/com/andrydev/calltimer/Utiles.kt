@@ -91,8 +91,7 @@ class Utiles @Inject constructor(){
 
     fun setAMPM(a: AlarmEntity,start:Boolean):String{
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            lateinit var inittime:LocalDateTime
-            inittime = if (start){
+            val inittime:LocalDateTime = if (start){
                 Instant.ofEpochMilli(a.initmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
             }else{
                 Instant.ofEpochMilli(a.endmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
@@ -110,8 +109,7 @@ class Utiles @Inject constructor(){
 
     fun hourwithminutetext(a: AlarmEntity,start: Boolean):String{
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            lateinit var inittime:LocalDateTime
-            inittime = if (start){
+            val inittime:LocalDateTime = if (start){
                 Instant.ofEpochMilli(a.initmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
             }else{
                 Instant.ofEpochMilli(a.endmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
@@ -134,7 +132,7 @@ class Utiles @Inject constructor(){
 
     fun iconAMPM(a: AlarmEntity,b:Boolean):Int{
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            var inittime:LocalDateTime = if (b){
+            val inittime:LocalDateTime = if (b){
                 Instant.ofEpochMilli(a.initmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
             }else{
                 Instant.ofEpochMilli(a.endmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
