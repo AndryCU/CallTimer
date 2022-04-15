@@ -30,7 +30,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:id="@+id/layoutStart"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -76,57 +76,56 @@
                     app:layout_constraintTop_toBottomOf="@id/imageviewstart" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layoutEnd"
-                app:layout_constraintTop_toBottomOf="@id/layoutStart"
-                app:layout_constraintVertical_bias="0.2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
 
-                <TextView
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:id="@+id/textoFin"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutEnd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:text="Hora de fin:"
-                    android:textSize="@dimen/_15ssp"
                     app:layout_constraintStart_toStartOf="parent"
-                    />
+                    app:layout_constraintTop_toBottomOf="@+id/layoutStart">
 
-                <TextView
-                    android:id="@+id/textviewTimeEnd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:text="10:30"
-                    android:textSize="@dimen/_30ssp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textoFin" />
-                <TextView
-                    android:layout_marginStart="@dimen/_8sdp"
-                    app:layout_constraintBottom_toBottomOf="@id/textviewTimeEnd"
-                    app:layout_constraintStart_toEndOf="@id/textviewTimeEnd"
-                    android:text="PM"
-                    android:textSize="@dimen/_15ssp"
-                    android:id="@+id/textviewAMPMEnd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/textoFin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="Hora de fin:"
+                        android:textSize="@dimen/_15ssp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/imageViewEnd"
-                    android:layout_width="@dimen/_15sdp"
-                    android:layout_height="@dimen/_15sdp"
-                    android:src="@drawable/moon"
-                    app:layout_constraintEnd_toEndOf="@+id/textviewAMPMEnd"
-                    app:layout_constraintStart_toStartOf="@+id/textviewAMPMEnd"
-                    app:layout_constraintTop_toTopOf="@+id/textviewTimeEnd" />
+                    <TextView
+                        android:id="@+id/textviewTimeEnd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="10:30"
+                        android:textSize="@dimen/_30ssp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textoFin" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/textviewAMPMEnd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:text="PM"
+                        android:textSize="@dimen/_15ssp"
+                        app:layout_constraintBottom_toBottomOf="@id/textviewTimeEnd"
+                        app:layout_constraintStart_toEndOf="@id/textviewTimeEnd" />
+
+                    <ImageView
+                        android:id="@+id/imageViewEnd"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:src="@drawable/moon"
+                        app:layout_constraintEnd_toEndOf="@+id/textviewAMPMEnd"
+                        app:layout_constraintStart_toStartOf="@+id/textviewAMPMEnd"
+                        app:layout_constraintTop_toTopOf="@+id/textviewTimeEnd" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <com.bitvale.switcher.SwitcherX
                     android:id="@+id/switchalarm"

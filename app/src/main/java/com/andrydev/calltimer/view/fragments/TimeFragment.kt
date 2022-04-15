@@ -74,7 +74,6 @@ class TimeFragment : Fragment() {
         }
 
        alarmViewModel.alarmLiveDataInit().observe(viewLifecycleOwner) {
-           Log.d("ZXCV","test alarmLiveDataInit observe $it")
             setTimeInitText()
         }
         alarmViewModel.alarmLiveDataEnd().observe(viewLifecycleOwner){
@@ -84,7 +83,6 @@ class TimeFragment : Fragment() {
 
     private fun setTimeInitText() {
         val a = alarmViewModel.getAlarm()
-        Log.d("ZXCV","setTimeInitText ${a.initmilliseconds}")
         binding.textviewTimeStart.text = utiles.hourwithminutetext(a, true)
         binding.textviewAMPMStart.text = utiles.setAMPM(a, true)
         binding.imageviewstart.setImageResource(utiles.iconAMPM(a,true))

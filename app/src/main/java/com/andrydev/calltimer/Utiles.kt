@@ -7,23 +7,22 @@ import java.time.*
 import java.util.*
 import javax.inject.Inject
 
-class Utiles @Inject constructor(){
+class Utiles @Inject constructor() {
     /*
         In this method i calc the time to start the alarm, baset in this idea:
         if the time selected is before current time, i have to add 1 day to the current date
      */
-    fun calcInitTime(hour:Int,minute:Int):Long{
+    fun calcInitTime(hour: Int, minute: Int): Long {
         //FOR ANDROID VERSIONS ABOVE OF OREO
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            var init=LocalDateTime.now().withHour(hour).withMinute(minute).withSecond(0).withNano(0)
-            val now=LocalDateTime.now().withSecond(0).withNano(0)
-            if (init.isBefore(now)){
-                init=init.plusDays(1)
+            var init =
+                LocalDateTime.now().withHour(hour).withMinute(minute).withSecond(0).withNano(0)
+            val now = LocalDateTime.now().withSecond(0).withNano(0)
+            if (init.isBefore(now)) {
+                init = init.plusDays(1)
             }
-
-            Log.d("ZXCV"," inicio time${init}")
             return init.toInstant(ZoneOffset.UTC).toEpochMilli()
-        } else {////FOR ANDROID VERSIONS PRIOR OF OREO
+        } else {
             val timenow = Calendar.getInstance()
             timenow.set(Calendar.SECOND, 0)
             timenow.set(Calendar.MILLISECOND, 0)
@@ -34,30 +33,32 @@ class Utiles @Inject constructor(){
             timeuserinit.set(Calendar.MILLISECOND, 0)
             timeuserinit.set(Calendar.SECOND, 0)
 
-
             if (timeuserinit.before(timenow)) {
                 timeuserinit.add(Calendar.DAY_OF_MONTH, 1)
             }
             return timeuserinit.timeInMillis
         }
     }
-    //this method return the time in milliseconds to start the alarm
-    fun calcEndTime(hour: Int, minute: Int, initinmilliseconds:Long):Long {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            var endtime=LocalDateTime.now().withHour(hour).withMinute(minute).withSecond(0).withNano(0)
-            val now = LocalDateTime.now().withSecond(0).withNano(0)
-            val inittime = Instant.ofEpochMilli(initinmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
-            val days=inittime.dayOfMonth-now.dayOfMonth
 
-            if(days==1){
-                endtime=endtime.plusDays(1)
-                if (endtime.isBefore(inittime)){
-                    endtime=endtime.plusDays(1)
+    //this method return the time in milliseconds to start the alarm
+    fun calcEndTime(hour: Int, minute: Int, initinmilliseconds: Long): Long {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            var endtime =
+                LocalDateTime.now().withHour(hour).withMinute(minute).withSecond(0).withNano(0)
+            val now = LocalDateTime.now().withSecond(0).withNano(0)
+            val inittime =
+                Instant.ofEpochMilli(initinmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
+            val days = inittime.dayOfMonth - now.dayOfMonth
+
+            if (days == 1) {
+                endtime = endtime.plusDays(1)
+                if (endtime.isBefore(inittime)) {
+                    endtime = endtime.plusDays(1)
                 }
             }
-            if (days==0){
-                if (endtime.isBefore(inittime)){
-                    endtime=endtime.plusDays(1)
+            if (days == 0) {
+                if (endtime.isBefore(inittime)) {
+                    endtime = endtime.plusDays(1)
                 }
             }
             return endtime.toInstant(ZoneOffset.UTC).toEpochMilli()
@@ -72,16 +73,17 @@ class Utiles @Inject constructor(){
             val calendarinit = Calendar.getInstance()
             calendarinit.timeInMillis = initinmilliseconds
             val days =
-                calendarinit.get(Calendar.DAY_OF_MONTH) - Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
-            if (days == 1 ) {
+                calendarinit.get(Calendar.DAY_OF_MONTH) - Calendar.getInstance()
+                    .get(Calendar.DAY_OF_MONTH)
+            if (days == 1) {
                 timeuserend.add(Calendar.DAY_OF_MONTH, 1)
-                if (timeuserend.before(calendarinit)){
-                    timeuserend.add(Calendar.DAY_OF_MONTH,1)
+                if (timeuserend.before(calendarinit)) {
+                    timeuserend.add(Calendar.DAY_OF_MONTH, 1)
                 }
             }
-            if (days==0) {
-                if (timeuserend.before(calendarinit)){
-                    timeuserend.add(Calendar.DAY_OF_MONTH,1)
+            if (days == 0) {
+                if (timeuserend.before(calendarinit)) {
+                    timeuserend.add(Calendar.DAY_OF_MONTH, 1)
                 }
             }
 
@@ -89,52 +91,73 @@ class Utiles @Inject constructor(){
         }
     }
 
-    fun setAMPM(a: AlarmEntity,start:Boolean):String{
+    fun setAMPM(a: AlarmEntity, start: Boolean): String {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val inittime:LocalDateTime = if (start){
+            val inittime: LocalDateTime = if (start) {
                 Instant.ofEpochMilli(a.initmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
-            }else{
+            } else {
                 Instant.ofEpochMilli(a.endmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
             }
-            if (inittime.hour>=12){
+            if (inittime.hour >= 12) {
                 "PM"
-            }else{
+            } else {
                 "AM"
             }
-        }else{
-            //TODO hacer este
-            ""
+        } else {
+            val calendarinit = Calendar.getInstance()
+            calendarinit.timeInMillis = a.initmilliseconds
+            val calendarend = Calendar.getInstance()
+            calendarend.timeInMillis = a.endmilliseconds
+            if (calendarinit.get(Calendar.HOUR_OF_DAY) >= 12) {
+                "PM"
+            } else {
+                "AM"
+            }
         }
     }
 
-    fun hourwithminutetext(a: AlarmEntity,start: Boolean):String{
+    fun hourwithminutetext(a: AlarmEntity, start: Boolean): String {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val inittime:LocalDateTime = if (start){
+            val inittime: LocalDateTime = if (start) {
                 Instant.ofEpochMilli(a.initmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
-            }else{
+            } else {
                 Instant.ofEpochMilli(a.endmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
             }
-            var minute=""
-            minute = if (inittime.minute<10){
+            var minute = ""
+            minute = if (inittime.minute < 10) {
                 "0${inittime.minute}"
-            }else{
+            } else {
                 "${inittime.minute}"
             }
-            if (inittime.hour>=12){
-                "${inittime.hour-12}:$minute"
-            }else{
+            if (inittime.hour >= 12) {
+                "${inittime.hour - 12}:$minute"
+            } else {
                 "${inittime.hour}:$minute"
             }
-        }else{
-            ""
+        } else {
+            val calendar = Calendar.getInstance()
+            calendar.timeInMillis = a.initmilliseconds
+            var minute = ""
+            minute = if (calendar.get(Calendar.MINUTE) < 10) {
+                "0${calendar.get(Calendar.MINUTE)}"
+            } else {
+                "${calendar.get(Calendar.MINUTE)}"
+            }
+            if (calendar.get(Calendar.HOUR) >= 12) {
+                "${calendar.get(Calendar.HOUR) - 12}:$minute"
+            } else {
+                "${calendar.get(Calendar.HOUR)}:$minute"
+            }
         }
+
     }
 
-    fun iconAMPM(a: AlarmEntity,b:Boolean):Int{
+
+    fun iconAMPM(a: AlarmEntity, b: Boolean): Int {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val inittime:LocalDateTime = if (b){
+            val inittime: LocalDateTime = if (b) {
                 Instant.ofEpochMilli(a.initmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
-            }else{
+            } else {
                 Instant.ofEpochMilli(a.endmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
             }
             if (inittime.hour >= 19 || inittime.hour < 7) {
@@ -142,9 +165,14 @@ class Utiles @Inject constructor(){
             } else {
                 R.drawable.sun
             }
-        }else{
-            0
+        } else {
+            val calendar = Calendar.getInstance()
+            calendar.timeInMillis = a.initmilliseconds
+            if (calendar.get(Calendar.HOUR) >= 19 || calendar.get(Calendar.HOUR) < 7) {
+                R.drawable.moon
+            } else {
+                R.drawable.sun
+            }
         }
     }
-
 }
