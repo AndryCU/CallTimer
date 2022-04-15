@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import com.andrydev.calltimer.CustomNotification
 import com.andrydev.calltimer.Preferences
 import com.andrydev.calltimer.R
 import com.andrydev.calltimer.Utiles
@@ -65,6 +66,7 @@ class TimeFragment : Fragment() {
                     binding.switchalarm.setChecked(true)
                     alarmViewModel.updateAlarmActivate(true)
                     preferences.saveInit(true)
+                    CustomNotification(requireContext()).showNotification("CallTimer", "Alarm is set")
                 }else{
                     Toast.makeText(context,"Hora de inicio o fin vacías",Toast.LENGTH_SHORT).show()
                 }

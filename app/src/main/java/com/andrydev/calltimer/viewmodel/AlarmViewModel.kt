@@ -33,11 +33,9 @@ class AlarmViewModel @Inject constructor(
     }
 
     fun addAlarmC(alarma: AlarmEntity) {
-        viewModelScope.launch {
-            withContext(Dispatchers.IO) {
+       runBlocking {
                 repository.insertAlarm(alarma)
             }
-        }
     }
 
     fun updateAlarmInit(i: Long) {
