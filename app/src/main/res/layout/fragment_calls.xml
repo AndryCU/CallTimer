@@ -9,8 +9,23 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    
+
+    <ListView
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="@dimen/_5sdp"
+        android:id="@+id/list_phones"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.8" />
+
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/addNumberFAB"
         android:elevation="@dimen/_15sdp"
         android:backgroundTint="@color/white"
         app:icon="@drawable/ic_baseline_add_ic_call_24"

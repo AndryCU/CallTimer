@@ -7,10 +7,11 @@ import com.andrydev.calltimer.model.daos.MessageDao
 import com.andrydev.calltimer.model.daos.NumberDao
 import com.andrydev.calltimer.model.entities.AlarmEntity
 import com.andrydev.calltimer.model.entities.MessageEntity
+import com.andrydev.calltimer.model.entities.NumberEntity
 
 
 @Database(
-    entities = [AlarmEntity::class, MessageEntity::class],
+    entities = [AlarmEntity::class, MessageEntity::class,NumberEntity::class],
     version = 1
 )
 abstract class CallTimerDataBase: RoomDatabase() {

@@ -30,4 +30,8 @@ object RoomModule {
     @Singleton
     @Provides
     fun provideMessageDao(db: CallTimerDataBase)=db.getMessagesDao()
+
+    @Singleton
+    @Provides
+    fun provideNumbersDao(db: CallTimerDataBase)=db.getNumbersDao()
 }

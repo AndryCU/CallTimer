@@ -11,5 +11,4 @@ data class NumberEntity(
     @ColumnInfo(name = "id") val id:Int=0,
     @ColumnInfo(name = "number") val number:String,
     @ColumnInfo(name = "contactName") val contactName:String,
-    @ColumnInfo(name = "isException") val isException:Boolean
     )
