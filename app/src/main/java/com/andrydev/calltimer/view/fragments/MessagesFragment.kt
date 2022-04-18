@@ -26,7 +26,7 @@ class MessagesFragment : Fragment() {
     private val binding get() = _binding!!
     private val messageViewModel: MessageViewModel by activityViewModels()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View {
         _binding= FragmentMessagesBinding.inflate(inflater,container,false)
         return binding.root
     }
@@ -34,7 +34,6 @@ class MessagesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.fabAddMessage.setOnClickListener {
-
             dialogSMS.show(parentFragmentManager,"CustomDialog")
         }
         messageViewModel.messages().observe(viewLifecycleOwner) {

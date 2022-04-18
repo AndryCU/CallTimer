@@ -10,6 +10,8 @@
     android:layout_height="wrap_content">
 
     <ImageView
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/imageView"
         android:layout_width="@dimen/_30sdp"
         android:layout_height="@dimen/_30sdp"
@@ -39,17 +41,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:layout_marginTop="@dimen/_5sdp"
         android:id="@+id/message_text_item"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.75"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
         android:maxLines="2"
         android:text="Este es un mensaje de prueba escrito para ver la cantidadad de carateres que puede ocupar en una fila y ver que tal se se en los dispositivos."
         android:textSize="@dimen/_10ssp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 

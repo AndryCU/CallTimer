@@ -29,15 +29,17 @@
         android:text="Alfredo"
         android:textSize="@dimen/_13ssp"
         app:layout_constraintStart_toEndOf="@+id/imageviewIconContact"
-        app:layout_constraintTop_toTopOf="@+id/imageviewIconContact" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:layout_marginTop="@dimen/_5sdp"
         android:id="@+id/phoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_10sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageviewIconContact"
         android:text="+53000000"
         android:textSize="@dimen/_10ssp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageviewIconContact"
+        app:layout_constraintTop_toBottomOf="@+id/contactName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

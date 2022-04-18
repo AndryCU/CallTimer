@@ -49,6 +49,7 @@ class DialogSMS @Inject constructor(
                     number = cursor.getString(0)
                     view.findViewById<TextView>(R.id.textviewContact).text=name
                 }
+                cursor!!.close()
             }
         }
 
