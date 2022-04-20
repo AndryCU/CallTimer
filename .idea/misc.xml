@@ -16,6 +16,7 @@
         <entry key="..\:/PERSONAL/PERSONAL/android/proyectos/proyectos_nativo/NewCallTimer/app/src/main/res/drawable/ic_baseline_add_ic_call_24.xml" value="0.1945" />
         <entry key="..\:/PERSONAL/PERSONAL/android/proyectos/proyectos_nativo/NewCallTimer/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.164" />
         <entry key="..\:/PERSONAL/PERSONAL/android/proyectos/proyectos_nativo/NewCallTimer/app/src/main/res/drawable/ic_launcher_background.xml" value="0.164" />
+        <entry key="..\:/PERSONAL/PERSONAL/android/proyectos/proyectos_nativo/NewCallTimer/app/src/main/res/drawable/message.xml" value="0.2115" />
         <entry key="..\:/PERSONAL/PERSONAL/android/proyectos/proyectos_nativo/NewCallTimer/app/src/main/res/drawable/night.xml" value="0.164" />
         <entry key="..\:/PERSONAL/PERSONAL/android/proyectos/proyectos_nativo/NewCallTimer/app/src/main/res/drawable/phone.xml" value="0.164" />
         <entry key="..\:/PERSONAL/PERSONAL/android/proyectos/proyectos_nativo/NewCallTimer/app/src/main/res/drawable/settings.xml" value="0.1945" />
@@ -36,6 +37,7 @@
         <entry key="..\:/PERSONAL/PERSONAL/android/proyectos/proyectos_nativo/NewCallTimer/app/src/main/res/layout/fragment_time.xml" value="0.33" />
         <entry key="..\:/PERSONAL/PERSONAL/android/proyectos/proyectos_nativo/NewCallTimer/app/src/main/res/layout/item_message.xml" value="0.5" />
         <entry key="..\:/PERSONAL/PERSONAL/android/proyectos/proyectos_nativo/NewCallTimer/app/src/main/res/layout/item_phones.xml" value="0.33" />
+        <entry key="..\:/PERSONAL/PERSONAL/android/proyectos/proyectos_nativo/NewCallTimer/app/src/main/res/layout/notification_layout.xml" value="0.9" />
         <entry key="..\:/PERSONAL/PERSONAL/android/proyectos/proyectos_nativo/NewCallTimer/app/src/main/res/layout/rounded_dialog.xml" value="0.17239583333333333" />
         <entry key="..\:/PERSONAL/PERSONAL/android/proyectos/proyectos_nativo/NewCallTimer/app/src/main/res/layout/row_list_days_of_week.xml" value="0.20416666666666666" />
         <entry key="..\:/PERSONAL/PERSONAL/android/proyectos/proyectos_nativo/NewCallTimer/app/src/main/res/layout/test_view.xml" value="0.33" />

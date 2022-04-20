@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_marginTop="3dp"
+        android:layout_marginStart="5dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/button_close_nitification"
+            android:layout_gravity="center"
+            android:src="@drawable/cancel"
+            android:layout_width="35dp"
+            android:layout_height="35dp"/>
+        <TextView
+            android:textSize="13sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Cancelar"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="cursive"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="CallTimer" />
+        <TextView
+            android:id="@+id/textview_notification_start"
+            android:layout_gravity="center"
+            android:text="Hora de inicio: 3:40pm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/textview_notification_end"
+            android:layout_gravity="start"
+            android:text="Hora de fin: 7:00pm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="3dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_gravity="center"
+            android:background="@drawable/messagenotification"
+            android:layout_width="37dp"
+            android:layout_height="37dp"/>
+
+        <TextView
+            android:id="@+id/textviewnotification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Enviados: 5"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+
+</LinearLayout>
