@@ -6,13 +6,10 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import android.os.SystemClock
-import android.util.Log
-import androidx.annotation.RequiresApi
+import com.andrydev.calltimer.service.ForegroundService
 import java.time.Instant
-import java.time.LocalDateTime
 import java.time.ZoneId
-import java.time.ZoneOffset
+
 
 class AlarmService(private val context: Context) {
     private val alarmManager: AlarmManager=context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -47,6 +44,7 @@ class AlarmService(private val context: Context) {
 
     }
 
+
     @SuppressLint("UnspecifiedImmutableFlag")
     fun cancelAlarm(id:Int, intent: Intent){
         alarmManager.cancel(
@@ -57,6 +55,7 @@ class AlarmService(private val context: Context) {
                 PendingIntent.FLAG_UPDATE_CURRENT
             )
         )
+        context.stopService(Intent(context,ForegroundService::class.java))
     }
 
 }

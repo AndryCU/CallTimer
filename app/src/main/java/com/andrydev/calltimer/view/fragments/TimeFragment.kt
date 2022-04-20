@@ -15,8 +15,10 @@ import com.andrydev.calltimer.Utiles
 import com.andrydev.calltimer.databinding.FragmentTimeBinding
 import com.andrydev.calltimer.model.entities.Alarm
 import com.andrydev.calltimer.model.entities.toDatabase
+import com.andrydev.calltimer.service.ForegroundService
 import com.andrydev.calltimer.service.alarms.AlarmService
 import com.andrydev.calltimer.service.alarms.StartAlarm
+import com.andrydev.calltimer.service.alarms.StopAlarm
 import com.andrydev.calltimer.viewmodel.AlarmViewModel
 import java.time.*
 import java.util.*
@@ -63,6 +65,10 @@ class TimeFragment : Fragment() {
             if (binding.switchalarm.isChecked){
                 alarmViewModel.updateAlarmActivate(false)
                 binding.switchalarm.setChecked(false)
+                val stopAlarm= AlarmService(requireContext())
+                stopAlarm.cancelAlarm(1234, Intent(activity,StartAlarm::class.java))
+                stopAlarm.cancelAlarm(12345, Intent(activity,StopAlarm::class.java))
+                //requireContext().stopService(Intent(requireContext(),ForegroundService::class.java))
             }else{
                 if (alarmViewModel.checkAlarmOK()){
                     binding.switchalarm.setChecked(true)
@@ -71,6 +77,8 @@ class TimeFragment : Fragment() {
                     val startAlarm= AlarmService(requireContext())
                     val intent= Intent(activity, StartAlarm::class.java)
                     startAlarm.setAlarm(alarmViewModel.getAlarm().initmilliseconds,1234,intent)
+                    val intentEnd=Intent(activity,StopAlarm::class.java)
+                    startAlarm.setAlarm(alarmViewModel.getAlarm().endmilliseconds,12345,intentEnd)
                 }else{
                     Toast.makeText(context,"Hora de inicio o fin vacías",Toast.LENGTH_SHORT).show()
                 }

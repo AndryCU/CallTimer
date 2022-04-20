@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.andrydev.calltimer">
+
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.SET_ALARM" />
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
@@ -9,16 +10,26 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
-        android:hardwareAccelerated="true"
         android:name=".MVVMCallTimerApp"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.NewCallTimer">
-        <service android:name=".service.ForegroundService">
-        </service>
+        <receiver
+            android:name=".service.alarms.StopAlarm"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver
+            android:name=".service.alarms.StartAlarm"
+            android:enabled="true"
+            android:exported="false" />
+        <service android:name=".service.ForegroundService" />
+
         <activity
             android:name=".view.activities.MainActivity"
             android:exported="true"
@@ -29,9 +40,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver
-            android:name=".service.alarms.StartAlarm"
-            android:exported="false"/>
     </application>
 
 </manifest>
