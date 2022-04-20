@@ -1,10 +1,7 @@
 package com.andrydev.calltimer
 
-import android.os.Build
-import android.util.Log
 import com.andrydev.calltimer.model.entities.AlarmEntity
 import java.time.*
-import java.util.*
 import javax.inject.Inject
 
 class Utiles @Inject constructor() {
@@ -14,21 +11,21 @@ class Utiles @Inject constructor() {
      */
     fun calcInitTime(hour: Int, minute: Int): Long {
             var init =
-                LocalDateTime.now().withHour(hour).withMinute(minute).withSecond(0).withNano(0)
-            val now = LocalDateTime.now().withSecond(0).withNano(0)
+                LocalDateTime.now().withHour(hour).withMinute(minute).withSecond(0).withNano(0).atZone(ZoneId.systemDefault())
+            val now = LocalDateTime.now().withSecond(0).withNano(0).atZone(ZoneId.systemDefault())
             if (init.isBefore(now)) {
                 init = init.plusDays(1)
             }
-            return init.toInstant(ZoneOffset.UTC).toEpochMilli()
+            return init.toInstant().toEpochMilli()
     }
 
     //this method return the time in milliseconds to start the alarm
     fun calcEndTime(hour: Int, minute: Int, initinmilliseconds: Long): Long {
             var endtime =
-                LocalDateTime.now().withHour(hour).withMinute(minute).withSecond(0).withNano(0)
+                LocalDateTime.now().withHour(hour).withMinute(minute).withSecond(0).withNano(0).atZone(ZoneId.systemDefault())
             val now = LocalDateTime.now().withSecond(0).withNano(0)
             val inittime =
-                Instant.ofEpochMilli(initinmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
+                Instant.ofEpochMilli(initinmilliseconds).atZone(ZoneId.systemDefault())
             val days = inittime.dayOfMonth - now.dayOfMonth
 
             if (days == 1) {
@@ -42,15 +39,15 @@ class Utiles @Inject constructor() {
                     endtime = endtime.plusDays(1)
                 }
             }
-            return endtime.toInstant(ZoneOffset.UTC).toEpochMilli()
+            return endtime.toInstant().toEpochMilli()
 
     }
 
     fun setAMPM(a: AlarmEntity, start: Boolean): String {
             val inittime: LocalDateTime = if (start) {
-                Instant.ofEpochMilli(a.initmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
+                Instant.ofEpochMilli(a.initmilliseconds).atZone(ZoneId.systemDefault()).toLocalDateTime()
             } else {
-                Instant.ofEpochMilli(a.endmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
+                Instant.ofEpochMilli(a.endmilliseconds).atZone(ZoneId.systemDefault()).toLocalDateTime()
             }
         return if (inittime.hour >= 12) {
             "PM"
@@ -61,9 +58,9 @@ class Utiles @Inject constructor() {
 
     fun hourwithminutetext(a: AlarmEntity, start: Boolean): String {
             val inittime: LocalDateTime = if (start) {
-                Instant.ofEpochMilli(a.initmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
+                Instant.ofEpochMilli(a.initmilliseconds).atZone(ZoneId.systemDefault()).toLocalDateTime()
             } else {
-                Instant.ofEpochMilli(a.endmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
+                Instant.ofEpochMilli(a.endmilliseconds).atZone(ZoneId.systemDefault()).toLocalDateTime()
             }
             var minute = ""
             minute = if (inittime.minute < 10) {
@@ -82,9 +79,9 @@ class Utiles @Inject constructor() {
 
     fun iconAMPM(a: AlarmEntity, b: Boolean): Int {
             val inittime: LocalDateTime = if (b) {
-                Instant.ofEpochMilli(a.initmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
+                Instant.ofEpochMilli(a.initmilliseconds).atZone(ZoneId.systemDefault()).toLocalDateTime()
             } else {
-                Instant.ofEpochMilli(a.endmilliseconds).atZone(ZoneOffset.UTC).toLocalDateTime()
+                Instant.ofEpochMilli(a.endmilliseconds).atZone(ZoneId.systemDefault()).toLocalDateTime()
             }
         return if (inittime.hour >= 19 || inittime.hour < 7) {
             R.drawable.moon
