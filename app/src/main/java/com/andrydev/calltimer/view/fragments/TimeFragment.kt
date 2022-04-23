@@ -2,7 +2,6 @@ package com.andrydev.calltimer.view.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,13 +14,11 @@ import com.andrydev.calltimer.Utiles
 import com.andrydev.calltimer.databinding.FragmentTimeBinding
 import com.andrydev.calltimer.model.entities.Alarm
 import com.andrydev.calltimer.model.entities.toDatabase
-import com.andrydev.calltimer.service.ForegroundService
 import com.andrydev.calltimer.service.alarms.AlarmService
 import com.andrydev.calltimer.service.alarms.StartAlarm
 import com.andrydev.calltimer.service.alarms.StopAlarm
 import com.andrydev.calltimer.viewmodel.AlarmViewModel
-import java.time.*
-import java.util.*
+import java.util.Calendar
 
 class TimeFragment : Fragment() {
     lateinit var utiles: Utiles
@@ -60,17 +57,18 @@ class TimeFragment : Fragment() {
             showTimePickcerDialog(false)
         }
 
-        binding.switchalarm.setChecked(alarmViewModel.getAlarm().isActivated)
+        binding.switchalarm.setChecked(preferences.getAlarmStarted())
         binding.switchalarm.setOnClickListener {
             if (binding.switchalarm.isChecked){
+                preferences.saveAlarmStarted(false)
                 alarmViewModel.updateAlarmActivate(false)
                 binding.switchalarm.setChecked(false)
                 val stopAlarm= AlarmService(requireContext())
                 stopAlarm.cancelAlarm(1234, Intent(activity,StartAlarm::class.java))
                 stopAlarm.cancelAlarm(12345, Intent(activity,StopAlarm::class.java))
-                //requireContext().stopService(Intent(requireContext(),ForegroundService::class.java))
             }else{
                 if (alarmViewModel.checkAlarmOK()){
+                    preferences.saveAlarmStarted(true)
                     binding.switchalarm.setChecked(true)
                     alarmViewModel.updateAlarmActivate(true)
                     preferences.saveInit(true)
@@ -119,7 +117,7 @@ class TimeFragment : Fragment() {
             val timePicker=TimePicker{
                     hour, minute ->
                 val alarm=alarmViewModel.getAlarm()
-                        val initemp=Calendar.getInstance()
+                        val initemp= Calendar.getInstance()
                         initemp.timeInMillis=alarm.initmilliseconds
                         alarmViewModel.updateAlarmEnd(utiles.calcEndTime(hour,minute,initemp.timeInMillis))
             }
