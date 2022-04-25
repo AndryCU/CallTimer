@@ -21,7 +21,7 @@ object RoomModule {
         context,
         CallTimerDataBase::class.java,
         DATABASE_NAME
-    ).build()
+    ).allowMainThreadQueries().build()
 
     @Singleton
     @Provides
