@@ -36,7 +36,7 @@ class CallsFragment : Fragment() {
             )
             if (cursor != null && cursor.moveToFirst()) {
                 name=cursor.getString(1)
-                number = cursor.getString(0)
+                number = cursor.getString(0).replace(" ","").replace("(","").replace(")","").replace("-","")
             }
             numberViewModel.insertNumber(NumberEntity(number = number, contactName = name))
         }
