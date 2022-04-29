@@ -1,60 +1,67 @@
 package com.andrydev.calltimer.view.fragments
 
+import android.app.AlertDialog
+import android.app.NotificationManager
+import android.content.Context
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.andrydev.calltimer.R
+import androidx.annotation.RequiresApi
+import com.andrydev.calltimer.Preferences
+import com.andrydev.calltimer.databinding.FragmentSettingsBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SettingsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SettingsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private var _binding:FragmentSettingsBinding?=null
+    private val binding get()=_binding!!
+    lateinit var preferences: Preferences
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        preferences= Preferences(requireContext())
+        binding.spinnermode.isChecked = preferences.getRingToneMode()==0
+        binding.spinnermode.onFocusChangeListener=null
+        binding.spinnermode.setOnCheckedChangeListener { button, _ ->
+            val notimanager = requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !notimanager.isNotificationPolicyAccessGranted){
+                checkNotificationService()
+                button.isChecked=false
+            }else{
+                if (button.isChecked){
+                    preferences.saveRingToneMode(0)
+                    button.isChecked=true
+                }else{
+                    preferences.saveRingToneMode(1)
+                    button.isChecked=false
+                }
+            }
         }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false)
+    ): View {
+        _binding= FragmentSettingsBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment settingsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SettingsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun checkNotificationService () {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Solicitud de Permiso")
+            .setMessage(
+                "Necesitamos permiso para modificar los ajustes del telefono. Esto nos permite establecer el modo: NO MOLESTAR de manera automática." +
+                        "Sin este permiso no prodrás establecer el modo silencio en la aplicación.")
+            .setPositiveButton("Conceder") { _, _ ->
+                val intent =
+                    Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
+                startActivity(intent)
             }
+            .setNegativeButton("Denegar") { _, _ ->
+            }
+            .show()
     }
 }
