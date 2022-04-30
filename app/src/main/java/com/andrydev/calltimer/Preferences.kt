@@ -1,15 +1,16 @@
 package com.andrydev.calltimer
 
 import android.content.Context
+import android.content.SharedPreferences
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 class Preferences @Inject constructor (@ApplicationContext context: Context) {
-    val SHARED_NAME="prefs"
-    val INIT_APP="init_app"
-    val ALARM_STARTED="alarm_started"
-    val RINGTONE_MODE="ringtone_mode"
-    val preferences=context.getSharedPreferences(SHARED_NAME,0)
+    private val SHARED_NAME="prefs"
+    private val INIT_APP="init_app"
+    private val ALARM_STARTED="alarm_started"
+    private val RINGTONE_MODE="ringtone_mode"
+    private val preferences: SharedPreferences =context.getSharedPreferences(SHARED_NAME,0)
 
     fun saveInit(v:Boolean){
         preferences.edit().putBoolean(INIT_APP,v).apply()
