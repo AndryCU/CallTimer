@@ -19,26 +19,32 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.NewCallTimer">
+        <activity
+            android:theme="@style/Theme.CallTimer"
+            android:name=".view.activities.OnBoardingIntroductionScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <receiver
             android:name=".service.alarms.StopAlarm"
             android:enabled="true"
             android:exported="true" />
-
         <receiver
             android:name=".service.alarms.StartAlarm"
             android:enabled="true"
             android:exported="false" />
+
         <service android:name=".service.ForegroundService" />
 
         <activity
             android:name=".view.activities.MainActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
