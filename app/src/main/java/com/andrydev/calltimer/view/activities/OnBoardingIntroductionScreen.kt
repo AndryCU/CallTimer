@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.viewpager.widget.ViewPager
 import com.andrydev.calltimer.Preferences
 import com.andrydev.calltimer.R
@@ -23,7 +22,7 @@ class OnBoardingIntroductionScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         preferences= Preferences(this)
-        if (preferences.getsaveInit()){
+        if (preferences.getInitIntroductionScreen()){
             val i= Intent(this,MainActivity::class.java)
             startActivity(i)
         }
@@ -48,7 +47,7 @@ class OnBoardingIntroductionScreen : AppCompatActivity() {
                 onBoardingViewPager!!.currentItem=position
             }
             if (position==onBoardingData.size){
-                preferences.saveInit(true)
+                preferences.saveInitIntroductionScreen(true)
                 val i= Intent(this,MainActivity::class.java)
                 startActivity(i)
             }
