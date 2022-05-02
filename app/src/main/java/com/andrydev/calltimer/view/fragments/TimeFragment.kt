@@ -1,6 +1,8 @@
 package com.andrydev.calltimer.view.fragments
 
+import android.content.Context
 import android.content.Intent
+import android.media.AudioManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -59,28 +61,7 @@ class TimeFragment : Fragment() {
 
         binding.switchalarm.setChecked(preferences.getAlarmStarted())
         binding.switchalarm.setOnClickListener {
-            if (binding.switchalarm.isChecked){
-                preferences.saveAlarmStarted(false)
-                alarmViewModel.updateAlarmActivate(false)
-                binding.switchalarm.setChecked(false)
-                val stopAlarm= AlarmService(requireContext())
-                stopAlarm.cancelAlarm(1234, Intent(activity,StartAlarm::class.java))
-                stopAlarm.cancelAlarm(12345, Intent(activity,StopAlarm::class.java))
-            }else{
-                if (alarmViewModel.checkAlarmOK()){
-                    preferences.saveAlarmStarted(true)
-                    binding.switchalarm.setChecked(true)
-                    alarmViewModel.updateAlarmActivate(true)
-                    preferences.saveInit(true)
-                    val startAlarm= AlarmService(requireContext())
-                    val intent= Intent(activity, StartAlarm::class.java)
-                    startAlarm.setAlarm(alarmViewModel.getAlarm().initmilliseconds,1234,intent)
-                    val intentEnd=Intent(activity,StopAlarm::class.java)
-                    startAlarm.setAlarm(alarmViewModel.getAlarm().endmilliseconds,12345,intentEnd)
-                }else{
-                    Toast.makeText(context,"Hora de inicio o fin vacías",Toast.LENGTH_SHORT).show()
-                }
-            }
+            activateAlarm()
         }
 
        alarmViewModel.alarmLiveDataInit().observe(viewLifecycleOwner) {
@@ -88,6 +69,33 @@ class TimeFragment : Fragment() {
         }
         alarmViewModel.alarmLiveDataEnd().observe(viewLifecycleOwner){
             setTimeEndText()
+        }
+    }
+
+    private fun activateAlarm() {
+        if (binding.switchalarm.isChecked) {
+            preferences.saveAlarmStarted(false)
+            alarmViewModel.updateAlarmActivate(false)
+            binding.switchalarm.setChecked(false)
+            val stopAlarm = AlarmService(requireContext())
+            stopAlarm.cancelAlarm(1234, Intent(activity, StartAlarm::class.java))
+            stopAlarm.cancelAlarm(12345, Intent(activity, StopAlarm::class.java))
+            val audiomanager= activity?.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+            audiomanager.ringerMode= AudioManager.RINGER_MODE_NORMAL
+        } else {
+            if (alarmViewModel.checkAlarmOK()) {
+                preferences.saveAlarmStarted(true)
+                binding.switchalarm.setChecked(true)
+                alarmViewModel.updateAlarmActivate(true)
+                preferences.saveInit(true)
+                val startAlarm = AlarmService(requireContext())
+                val intent = Intent(activity, StartAlarm::class.java)
+                startAlarm.setAlarm(alarmViewModel.getAlarm().initmilliseconds, 1234, intent)
+                val intentEnd = Intent(activity, StopAlarm::class.java)
+                startAlarm.setAlarm(alarmViewModel.getAlarm().endmilliseconds, 12345, intentEnd)
+            } else {
+                Toast.makeText(context, "Hora de inicio o fin vacías", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
