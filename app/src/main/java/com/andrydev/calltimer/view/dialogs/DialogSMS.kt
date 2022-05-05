@@ -60,7 +60,7 @@ class DialogSMS @Inject constructor(
         }
         view.findViewById<TextView>(R.id.saveButtomDialog).setOnClickListener {
             val messagetext=view.findViewById<EditText>(R.id.editTextSMSDialog).text.toString()
-            if (messagetext.isNotEmpty()) {
+            if (messagetext.isNotEmpty() && view.findViewById<TextView>(R.id.textviewContact).text.isNotEmpty()) {
                 CoroutineScope(Dispatchers.IO).launch {
                     messageRepository.insertMessage(MessageEntity(number, name,messagetext))
                 }
