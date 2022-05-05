@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:textStyle="bold"
+        android:fontFamily="@font/robotoblackitalic"
         android:layout_marginStart="@dimen/_10sdp"
         android:id="@+id/contactName"
         android:layout_width="wrap_content"
@@ -32,6 +32,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:fontFamily="@font/robotoregular"
         android:layout_marginTop="@dimen/_5sdp"
         android:id="@+id/phoneNumber"
         android:layout_width="wrap_content"

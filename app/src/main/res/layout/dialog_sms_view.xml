@@ -10,6 +10,7 @@
     tools:context=".view.activities.MainActivity">
 
     <TextView
+        android:fontFamily="@font/robotoblackitalic"
         android:id="@+id/textTittleMessageDialogView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,6 +21,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:fontFamily="@font/robotolight"
+        android:layout_marginTop="@dimen/_5sdp"
         app:layout_constraintTop_toBottomOf="@id/textTittleMessageDialogView"
         android:id="@+id/textInfoDialogView"
         android:layout_width="wrap_content"
@@ -30,12 +33,13 @@
         app:layout_constraintStart_toStartOf="@+id/editTextSMSDialog" />
 
     <EditText
+        android:fontFamily="@font/robotolight"
         android:id="@+id/editTextSMSDialog"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/_25sdp"
         android:layout_marginTop="@dimen/_6sdp"
-        android:hint="Texto del Mensaje"
+        android:hint="Escriba aqui su mensaje"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.35"
         android:layout_marginEnd="@dimen/_15sdp"
@@ -43,6 +47,7 @@
         app:layout_constraintWidth_percent="0.15" />
 
     <TextView
+        android:fontFamily="@font/robotolight"
         android:layout_marginTop="@dimen/_10sdp"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -57,42 +62,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_8sdp"
-        android:background="@drawable/sun"
+        android:background="@drawable/ic_baseline_person_add_alt_1_24"
         android:textSize="@dimen/_10ssp"
         app:layout_constraintStart_toStartOf="@+id/editTextSMSDialog"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
+        android:fontFamily="@font/robotoregular"
         android:id="@+id/textviewContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_20sdp"
-        android:text="+5355496253"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintBottom_toBottomOf="@+id/imageButtonAddContact"
         app:layout_constraintStart_toEndOf="@+id/imageButtonAddContact"
         app:layout_constraintTop_toTopOf="@+id/imageButtonAddContact" />
 
-    <ImageButton
+    <TextView
         android:id="@+id/saveButtomDialog"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="@dimen/_15sdp"
-        android:background="@drawable/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_15ssp"
+        android:textSize="@dimen/_15sdp"
+        android:text="Guardar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.08"
-        app:layout_constraintWidth_percent="0.08" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <ImageButton
+    <TextView
+        android:textSize="@dimen/_15ssp"
+        android:text="Cancelar"
         android:id="@+id/cancelButtonDialog"
         android:layout_marginBottom="@dimen/_15sdp"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_25sdp"
-        android:background="@drawable/save"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/saveButtomDialog"
-        app:layout_constraintHeight_percent="0.08"
-        app:layout_constraintWidth_percent="0.08" />
+        app:layout_constraintEnd_toStartOf="@+id/saveButtomDialog" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -58,7 +58,7 @@ class DialogSMS @Inject constructor(
             i.type= ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
             responseActivytiContact.launch(i)
         }
-        view.findViewById<ImageButton>(R.id.saveButtomDialog).setOnClickListener {
+        view.findViewById<TextView>(R.id.saveButtomDialog).setOnClickListener {
             val messagetext=view.findViewById<EditText>(R.id.editTextSMSDialog).text.toString()
             if (messagetext.isNotEmpty()) {
                 CoroutineScope(Dispatchers.IO).launch {
@@ -70,7 +70,7 @@ class DialogSMS @Inject constructor(
             }
         }
 
-        view.findViewById<ImageButton>(R.id.cancelButtonDialog).setOnClickListener {
+        view.findViewById<TextView>(R.id.cancelButtonDialog).setOnClickListener {
             dismiss()
         }
 

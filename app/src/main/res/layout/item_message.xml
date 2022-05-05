@@ -21,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:fontFamily="@font/robotolight"
         android:id="@+id/textviewContactNumber"
         android:textSize="@dimen/_8ssp"
         android:layout_width="wrap_content"
@@ -30,6 +31,7 @@
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/contact_text_item" />
     <TextView
+        android:fontFamily="@font/robotoregular"
         android:textStyle="bold"
         android:layout_marginStart="@dimen/_5sdp"
         android:id="@+id/contact_text_item"
@@ -41,6 +43,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:fontFamily="@font/robotolight"
         android:id="@+id/message_text_item"
         android:layout_width="0dp"
         app:layout_constraintWidth_percent="0.75"

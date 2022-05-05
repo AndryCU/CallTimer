@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#cce3ff"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.fragments.SettingsFragment">
 
@@ -11,21 +12,33 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:fontFamily="@font/robotoblackitalic"
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="Configuración"
+            android:textSize="@dimen/_20ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:fontFamily="@font/robotolight"
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_20sdp"
             android:text="Modo Silencio"
             android:textSize="@dimen/_15ssp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <androidx.appcompat.widget.SwitchCompat
             android:checked="false"
             android:id="@+id/spinnermode"
             android:focusable="false"
-            android:textOn="Activado"
-            android:textOff="Desactivado"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.9"
             android:layout_width="wrap_content"
@@ -36,13 +49,47 @@
             app:layout_constraintTop_toTopOf="@+id/textView2" />
 
         <TextView
-            android:layout_marginTop="@dimen/_5sdp"
-            android:textSize="@dimen/_10ssp"
+            android:fontFamily="@font/robotolight"
+            android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
             android:text="Permite activar el modo Silencio en el telélono"
+            android:textSize="@dimen/_10ssp"
             app:layout_constraintStart_toStartOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <TextView
+            android:fontFamily="@font/robotolight"
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="Permitir llamadas *99"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <TextView
+            android:fontFamily="@font/robotolight"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Explicar"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            app:layout_constraintHorizontal_bias="0.9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/textView5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView5"
+            app:layout_constraintTop_toTopOf="@+id/textView5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
