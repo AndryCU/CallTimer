@@ -7,7 +7,7 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../../gradle-7.4.1" />
+        <option name="gradleHome" value="/media/andrys/DATOS/PERSONAL/PERSONAL/android/UBUNTU/gradle-7.4.2-all/gradle-7.4.2" />
         <option name="gradleJvm" value="Android Studio default JDK" />
         <option name="modules">
           <set>
@@ -15,7 +15,6 @@
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>
