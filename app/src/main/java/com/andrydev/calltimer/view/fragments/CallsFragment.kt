@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
 import com.andrydev.calltimer.adapters.PhonesAdapter
@@ -21,7 +22,7 @@ import com.andrydev.calltimer.model.entities.NumberEntity
 import com.andrydev.calltimer.viewmodel.NumberViewModel
 
 class CallsFragment : Fragment() {
-    private var _binding:FragmentCallsBinding?=null
+    private var _binding: FragmentCallsBinding?=null
     private val binding get() = _binding!!
 
     private val numberViewModel: NumberViewModel by activityViewModels()
@@ -58,10 +59,18 @@ class CallsFragment : Fragment() {
         binding.addNumberFAB.setOnClickListener {
             activityResultLauncher.launch(Manifest.permission.READ_PHONE_STATE)
         }
-
-        numberViewModel.numbers().observe(viewLifecycleOwner){
-            if (it.isNotEmpty()){
-                val adapter=PhonesAdapter(requireContext(),it)
+        numberViewModel.numbers().observe(viewLifecycleOwner){ listN->
+            if (listN.isNotEmpty()){
+                val adapter=PhonesAdapter(requireContext(),listN)
+                binding.listPhones.adapter=adapter
+                adapter.setItemClickListener(object : PhonesAdapter.ItemClicker {
+                    override fun onDeleteClick(position: Int) {
+                        Toast.makeText(requireContext(), "Borrado el contacto: ${listN[position].contactName}", Toast.LENGTH_SHORT).show()
+                        numberViewModel.deletenumber(listN[position])
+                    }
+                })
+            }else{
+                val adapter=PhonesAdapter(requireContext(),listN)
                 binding.listPhones.adapter=adapter
             }
         }

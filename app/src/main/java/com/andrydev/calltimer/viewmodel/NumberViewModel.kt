@@ -27,4 +27,13 @@ class NumberViewModel @Inject constructor( private val repository: NumberReposit
         }
     }
 
+    fun deletenumber(numberEntity: NumberEntity){
+        viewModelScope.launch {
+            withContext(Dispatchers.IO){
+                repository.deleteNumber(numberEntity)
+            }
+        }
+    }
+
+
 }
